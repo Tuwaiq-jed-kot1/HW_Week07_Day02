@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sumaya.hw_week06_day05.R
+import com.sumaya.hw_week06_day05.data.ui.WebViewFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var moviesRV: RecyclerView
@@ -21,6 +22,18 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_KEY = "lastSearch"
+
+    fun navigateToWebViewFragment(movieId:Int) {
+        val webViewFragmentManager = supportFragmentManager
+        val webViewFragmentTransaction = webViewFragmentManager.beginTransaction()
+        val webViewFragment = WebViewFragment()
+
+        val mBundle = Bundle()
+        mBundle.putString("urlString",movieId.toString())
+        webViewFragment.arguments=mBundle
+        webViewFragmentTransaction.add(R.id.frameLayout,webViewFragment).commit()
+        webViewFragmentTransaction.addToBackStack("webViewFragment")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +48,9 @@ class MainActivity : AppCompatActivity() {
     private fun loadMoviesData(query: String? = null) {
         vm.fetchInterestingList(query).observe(this, {
             if(query.isNullOrEmpty()){
-                moviesRV.adapter = Movie_RV_Adapter(it.results)
+                moviesRV.adapter = Movie_RV_Adapter(it.results,this)
             } else {
-                moviesRV.swapAdapter(Movie_RV_Adapter(it.results), false)
+                moviesRV.swapAdapter(Movie_RV_Adapter(it.results,this), false)
             }
             Log.d("Tha Movie Main Response", it.results.toString())
         })
