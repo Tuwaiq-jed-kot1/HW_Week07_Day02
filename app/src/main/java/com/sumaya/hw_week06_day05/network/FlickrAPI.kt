@@ -13,4 +13,3 @@ interface FlickrAPI {
     @GET("search/movie?api_key=${BuildConfig.flickrApiKey}&language=en-US&page=1&include_adult=false")
     suspend fun searchMovies(@Query("query") searchKeyWord:String ): MoviesData
 }
-
