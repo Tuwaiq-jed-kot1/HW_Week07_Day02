@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import com.sumaya.hw_week06_day05.R
 
 
+
 class MovieWebView : AppCompatActivity(){
     private lateinit var webView: WebView
     private lateinit var progressBar: ProgressBar
