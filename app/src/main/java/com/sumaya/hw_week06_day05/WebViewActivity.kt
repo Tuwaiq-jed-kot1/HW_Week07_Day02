@@ -7,7 +7,6 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
-import com.tuwaiq.restandretrofit.data.network.models.Results
 
 class WebViewActivity : AppCompatActivity() {
 
@@ -16,16 +15,16 @@ class WebViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_web_view)
+        setContentView(R.layout.web_view_activity)
 
         webView = findViewById(R.id.webView)
         progressBar = findViewById(R.id.progressBar)
         progressBar.max = 100
-        val moviesID:String? = intent.getStringExtra("A")
+        val moviesID:String? = intent.getStringExtra("id")
 
 
         webView.webViewClient = WebViewClient()
-        webView.settings.javaScriptEnabled = true // احتاجها اذا الموقع مستخدمين فيه الجافاسكربت
+        webView.settings.javaScriptEnabled = true
         webView.loadUrl("https://www.themoviedb.org/movie/" + moviesID)
 
         //UI design

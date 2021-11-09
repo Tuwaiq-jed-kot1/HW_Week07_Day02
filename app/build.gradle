@@ -1,15 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
     id 'com.google.secrets_gradle_plugin' version '0.4'
+
+
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.tuwaiq.restandretrofit"
-        minSdk 29
+        applicationId "com.sumaya.hw_week06_day05"
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -34,25 +37,28 @@ android {
 
 dependencies {
 
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    // Coroutines Library
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+
+    //coil
+    implementation("io.coil-kt:coil:1.4.0")
+
+//    implementation 'androidx.core:core-ktx:1.6.0'
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     testImplementation 'junit:junit:4.+'
-
-    // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
-
-    // coil
-    implementation("io.coil-kt:coil:1.4.0")
-
-    //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
-
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
